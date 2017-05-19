@@ -6,10 +6,11 @@
             @foreach($surveys as $var)
 
                 <div class="alert alert-success">
-                    <h2 href="#">{{$var->title}}<span class="label label-success" style="float:right">{{$var->points_per_response}}</span></h2>
-                    <h4>{{$var->company->user->name}}</h4>
+                    <h3 href="#">{{$var->title}}<span class="label label-success" style="float:right">{{$var->points_per_response}}</span></h3>
+                    <h5>{{$var->company->user->name}}</h5>
                 </div>
             @endforeach
+            {{$surveys->links()}}
         </div>
     </div>
 @endsection
