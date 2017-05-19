@@ -4,58 +4,57 @@
 
 <div class="container">
     <div class="row">
-        <div class="progress">
-  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
-  aria-valuemin="0" aria-valuemax="100" style="width:40%">
-    % Complete
-  </div>
-</div>
+        <div class="col-md-4">
+            <form class="form-horizontal" action="response" method="post">
+                <h2>{{servey->title}}</h2>
+                <h4>{{survey->description}}</h4>
+                @foreach($survey->questions as $question)
+                <h5>{{question->title}}</h5>
+                <h6>{{question->description}}</h6>
 
 
-    <div class="col-md-12">
+                @if($question->type->id == 1)
+                <div class="form-group">
+                    <input id="stext" type="text" class="form-control" name="{{question->id}}" required>
+                </div>
 
-     <h4>This is a text input question</h4>
-     <input id="stext" type="text" class="form-control" name="stext"  maxlength="60" required autofocus>
 
-    </div>
-    <div class="col-md-12">
+                @elseif($question->type->id == 2)
+                <div class="form-group">
+                    <textarea id="body" type="text" class="form-control" name="{{question->id}}" required>
+                    </textarea>
+                </div>
 
-     <h4>Large Text input question</h4>
-     <input id="ltext" type="text" class="form-control" name="ltext"  required >
+                @elseif($question->type->id == 3)
+                @foreach($question->mc_options as $option)
+                <div class="radio">
+                    <label><input type="radio" class="form-control" name="{{question->id}}">{{$option->option}}</label>
+                </div>
+                @endforeach
 
-  </div>
-  <div class="col-md-12">
-   @if(questions->type->id == 3)
-        <h5>Multiple Question</h5>
-        foreach($questions as $var)
-        <div class="radio">
-        <label><input type="radio" name="optradio">{{$var->type}}</label>
-    </div>
-        @endforeach
-    @else if(questions->type->id == 4)
-        <h5>Check Box Question</h5>
-        foreach($questions as $var)
-        <div class="checkbox">
-        <label><input type="checkbox" value="">{{$var->type}}</label>
+                @elseif($questions->type->id == 4)
+                <div class="form-group">
+                    @foreach($question->mc_options as $option)
+                    <div class="checkbox">
+                        <label><input type="checkbox" class="form-control" name="{{question->id}}">{{$option->option}}</label>
+                    </div>
+                    @endforeach
+                </div>
+                @endif
+
+
+                @endforeach
+
+                <div class="form-group">
+                    <div class="col-md-6 col-md-offset-4">
+                        <button type="submit" style="float right">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
-        @endforeach
-    @endif
 
-</div>
-
-<div class="form-group">
-    <div class="col-md-6 col-md-offset-4">
-        <button type="submit" style="float right">
-            Submit
-        </button>
     </div>
 </div>
-
-
-
-  </div>
-
-</div>
-
-
 @endsection
