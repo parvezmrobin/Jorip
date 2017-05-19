@@ -27,4 +27,7 @@ Route::get('/answer', function () {
     return view('answer');
 });
 
+Route::post('/survey', 'SurveyController@store');
+Route::get('/survey/create', 'SurveyController@create');
 Route::get('/survey/{surveys}', 'SurveyController@show');
+

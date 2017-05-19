@@ -24,7 +24,7 @@ class SurveyController extends Controller
      */
     public function create()
     {
-        //
+        return view('question');
     }
 
     /**
@@ -35,7 +35,9 @@ class SurveyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $survey = new Survey();
+        $survey->title = $request->input('title');
+        $survey->
     }
 
     /**
