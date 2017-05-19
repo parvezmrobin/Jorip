@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Question;
+use App\Survey;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -12,9 +13,9 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Survey $survey)
     {
-        //
+        return view('individuallist')->with('questions', $survey->questions);
     }
 
     /**
@@ -46,7 +47,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        return view('answer')->with('questions', $question);
+        return view('individualdetails')->with('question', $question);
     }
 
     /**

@@ -70,7 +70,7 @@ class SurveySeeder extends Seeder
                     }
                     $quesId = DB::table('questions')->insertGetId($question);
 
-                    if ($j < 4) {
+                    if ($j > 2) {
                         for ($k = 0; $k < 4; $k++) {
                             DB::table('mc_options')->insert([
                                 'question_id' => $quesId,

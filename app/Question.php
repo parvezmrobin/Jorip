@@ -13,4 +13,8 @@ class Question extends Model
     public function Options(){
         return $this->hasMany(McOption::class);
     }
+
+    public function responses(){
+        return $this->hasMany(Response::class);
+    }
 }

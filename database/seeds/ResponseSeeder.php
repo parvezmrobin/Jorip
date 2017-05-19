@@ -28,7 +28,7 @@ class ResponseSeeder extends Seeder
                     ];
 
                     if ($question->type->id > 2){
-                        $response['response'] = rand(1, 4);
+                        $response['response'] = $question->options->random()->id;
                     } else {
                         $response['response'] = $faker->sentence;
                     }
