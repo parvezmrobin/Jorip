@@ -16,7 +16,15 @@ class SurveyController extends Controller
      */
     public function index()
     {
-        //
+        $surveys = Survey::where('company_id', \Auth::id())->get();
+        foreach ($surveys as $survey) {
+            $survey->num_response = \DB::table('questions')
+                ->join('responses', 'question_id', 'questions.id')
+                ->where('question.survey_id', $survey->id)
+                ->select(\DB::raw('count(DISTINCT respondent_id)'))
+                ->get()->first();
+        }
+        return view('survey_list')->with('surveys', $surveys);
     }
 
     /**
