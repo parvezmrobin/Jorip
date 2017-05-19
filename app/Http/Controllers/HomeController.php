@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $surveys = Survey::active()->latest()->get();
+        $surveys = Survey::active()->latest()->paginate(15);
         return view('surveys')->with('surveys', $surveys);
     }
 }
