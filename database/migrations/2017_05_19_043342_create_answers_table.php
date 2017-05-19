@@ -13,10 +13,11 @@ class CreateAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('answers', function (Blueprint $table) {
+        Schema::create('responses', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('respondent_id');
             $table->unsignedInteger('question_id');
+            $table->string('response');
             $table->timestamps();
 
             $table->foreign('respondent_id')
@@ -37,6 +38,6 @@ class CreateAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answers');
+        Schema::dropIfExists('responses');
     }
 }
