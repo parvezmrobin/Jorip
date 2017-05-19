@@ -30,6 +30,6 @@ Route::get('/answer', function () {
 Route::post('/survey', 'SurveyController@store');
 Route::get('/survey/create', 'SurveyController@create');
 Route::get('/survey/{survey}', 'SurveyController@show');
-
-
+Route::get('/question/{question}', 'QuestionController@show');
+Route::get('/stat/{survey}', 'QuestionController@index');
 
