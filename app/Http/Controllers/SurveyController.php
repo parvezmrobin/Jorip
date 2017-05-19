@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Survey;
 use Illuminate\Http\Request;
+use App\Question;
+use App\McOption;
 
 class SurveyController extends Controller
 {
@@ -37,7 +39,35 @@ class SurveyController extends Controller
     {
         $survey = new Survey();
         $survey->title = $request->input('title');
-        $survey->
+        $survey->description = $request->input('description');
+        $survey->company_id = $request->input('user_id');
+        $survey->points_per_response = $request->input('ppr');
+        $survey->total_points = $request->input('tp');
+        $survey->save();
+
+
+        $questions = $request->input('questions');
+
+        foreach ($questions as $ques) {
+            $question = new Question();
+            $question->type_id = $ques['type'];
+            $question->survey_id = $survey->id;
+
+            $question->title = $ques['title'];
+            $question->description = $ques['description'];
+            $question->save();
+
+            if ($question->type_id > 2){
+                foreach ($ques['options'] as $opt) {
+                    $option = new McOption();
+                    $option->question_id = $question->id;
+                    $option->option = $opt;
+                    $option->save();
+                }
+            }
+        }
+
+        return $survey->id;
     }
 
     /**
@@ -48,7 +78,7 @@ class SurveyController extends Controller
      */
     public function show(Survey $survey)
     {
-        return view('answer')->with('questions', $survey->questions);
+        return view('answer')->with('survey', $survey);
     }
 
     /**
