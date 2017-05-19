@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Answer;
+use App\Response;
 use Illuminate\Http\Request;
 
-class AnswerController extends Controller
+class ResponseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +35,16 @@ class AnswerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inputs = $request->all();
+        $userId = \Auth::id();
+
+        foreach ($inputs as $question => $input) {
+            $response = new Response();
+            $response->respondent_id = $userId;
+            $response->question_id = $question;
+            $response->response = $input;
+            $response->save();
+        }
     }
 
     /**

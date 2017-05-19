@@ -42,11 +42,11 @@ class SurveyController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Survey  $survey
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Survey $survey)
     {
-        //
+        return view('answer')->with('questions', $survey->questions);
     }
 
     /**

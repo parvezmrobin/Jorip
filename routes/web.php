@@ -26,3 +26,5 @@ Route::get('/surveys', function () {
 Route::get('/answer', function () {
     return view('answer');
 });
+
+Route::get('/survey/{surveys}', 'SurveyController@show');

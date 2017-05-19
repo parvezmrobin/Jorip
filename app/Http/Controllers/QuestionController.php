@@ -46,7 +46,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+        return view('answer')->with('questions', $question);
     }
 
     /**
@@ -69,7 +69,7 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+
     }
 
     /**
