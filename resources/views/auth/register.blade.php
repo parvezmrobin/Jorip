@@ -61,6 +61,50 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="contactnumber" class="col-md-4 control-label">Contact Number</label>
+
+                            <div class="col-md-6">
+                                <input id="contactnumber" type="number" class="form-control" name="contactnumber" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender" class="col-md-4 control-label">Gender</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="gender" id="gender">
+                                    <option>Male</option>
+                                    <option>Femle</option>
+                                    <option>Others</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="role" class="col-md-4 control-label">Role</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="role" id="role" required>
+                                    <option value="1">Company</option>
+                                    <option value="2">Respondent</option>
+                                </select>
+                            </div>
+                        </div>
+
+                            <div class="form-group">
+                                <label for="birthday" class="col-md-4 control-label">Birthday</label>
+
+                                <div class="col-md-6">
+                                    <input id="birthday" type="date" class="form-control" name="birthday" >
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="profession" class="col-md-4 control-label">Profession</label>
+
+                                <div class="col-md-6">
+                                    <input id="profession" type="text" class="form-control" name="profession" >
+                                </div>
+                            </div>
+
+
+                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Register
