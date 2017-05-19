@@ -11,11 +11,12 @@ class QuestionController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param $survey \App\Survey
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Survey $survey)
     {
-        return view('individuallist')->with('questions', $survey->questions);
+        return view('individuallist')->with('survey', $survey);
     }
 
     /**
