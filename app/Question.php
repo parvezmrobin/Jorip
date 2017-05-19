@@ -9,4 +9,8 @@ class Question extends Model
     public function type(){
         return $this->belongsTo('App\Type');
     }
+
+    public function Options(){
+        return $this->hasMany(McOption::class);
+    }
 }

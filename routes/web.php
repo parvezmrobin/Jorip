@@ -29,5 +29,7 @@ Route::get('/answer', function () {
 
 Route::post('/survey', 'SurveyController@store');
 Route::get('/survey/create', 'SurveyController@create');
-Route::get('/survey/{surveys}', 'SurveyController@show');
+Route::get('/survey/{survey}', 'SurveyController@show');
+
+
 
