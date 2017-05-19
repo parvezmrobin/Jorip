@@ -29,6 +29,10 @@
            width: 20%;
            font-size: xx-large;
        }
+       body {
+       padding-top: 100px;
+   }
+
 
 
  </style>
@@ -97,7 +101,10 @@
   </div>
 </nav>
 
-        @yield('content')
+        <div class="container" >
+
+            @yield('content')
+        </div>
     </div>
 
     <!-- Scripts -->
