@@ -16,7 +16,7 @@
                     <h6>{{$question->description}}</h6>
 
                     @if($question->type->id == 1)
-                    {{$question->id}}
+
                     <div class="form-horizontal">
                         <div class="form-group">
                             <input id="stext" type="text" class="form-control" name="{{$question->id}}" required >
@@ -25,7 +25,7 @@
 
 
                     @elseif($question->type->id == 2)
-                    {{$question->id}}
+
                     <div class="form-horizontal">
                         <div class="form-group">
                             <textarea id="body" type="text" class="form-control" name="{{$question->id}}" required>
@@ -35,8 +35,8 @@
 
 
 
-                    @elseif($question->type->id == 4)
-                    {{$option->question_id}}
+                    @elseif($question->type->id == 3)
+
 
                     @foreach($question->options as $option)
 
@@ -45,14 +45,13 @@
                     </div>
                     @endforeach
 
-                    @elseif($question->type->id == 3)
-
+                    @elseif($question->type->id == 4)
+                        
                         @foreach($question->options as $option)
-                        {{$option->option}}
-                        {{$option->question_id}}
-                        <!-- <div class="checkbox">
+
+                        <div class="checkbox">
                             <label><input type="checkbox"  name="{{$question->id}}">{{$option->option}}</label>
-                        </div> -->
+                        </div>
                         @endforeach
 
                     @endif
