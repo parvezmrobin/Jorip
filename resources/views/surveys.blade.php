@@ -4,11 +4,12 @@
     <div class="container">
         <div class="row">
             @foreach($surveys as $var)
-
-                <div class="alert alert-success">
-                    <h3 href="#">{{$var->title}}<span class="label label-success" style="float:right">{{$var->points_per_response}}</span></h3>
+                <div  class="alert alert-info">
+                <a href="./survey/{{$var->id}}">
+                    <h3 >{{$var->title}}<span class="label label-primary" style="float:right">{{$var->points_per_response}}</span></h3>
                     <h5>{{$var->company->user->name}}</h5>
-                </div>
+                </a>
+            </div>
             @endforeach
             {{$surveys->links()}}
         </div>
