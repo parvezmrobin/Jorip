@@ -11,6 +11,7 @@
 |
 */
 
+Route::post('response', 'ResponseController@store');
 Route::get('/', function () {
     return view('welcome');
 });

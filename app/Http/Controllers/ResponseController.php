@@ -35,16 +35,27 @@ class ResponseController extends Controller
      */
     public function store(Request $request)
     {
-        $inputs = $request->all();
+        $inputs = $request->except('_token');
         $userId = \Auth::id();
 
         foreach ($inputs as $question => $input) {
+            if (is_array($input)){
+                foreach ($input as $item) {
+                    $response = new Response();
+                    $response->respondent_id = $userId;
+                    $response->question_id = $question;
+                    $response->response = $item;
+                    $response->save();
+                }
+                continue;
+            }
             $response = new Response();
             $response->respondent_id = $userId;
             $response->question_id = $question;
             $response->response = $input;
             $response->save();
         }
+        return redirect('/home')->with('alert', 'Response Submitted');
     }
 
     /**

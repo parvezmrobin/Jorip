@@ -3,6 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row">
+            @if(isset($alert))
+                <div class="alert alert-info alert-dismissable">
+                    {{$alert}}
+                </div>
+            @endif
             @foreach($surveys as $var)
                 <div  class="alert alert-info">
                 <a href="./survey/{{$var->id}}">
