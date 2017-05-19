@@ -28,10 +28,17 @@ Route::get('/answer', function () {
     return view('answer');
 });
 
+Route::get('/payments', function () {
+    return view('payments');
+});
+
+Route::get('/survey_list', function () {
+    return view('survey_list');
+});
+
 Route::post('/survey', 'SurveyController@store');
 Route::get('/survey/create', 'SurveyController@create');
 Route::get('/survey/{survey}', 'SurveyController@show');
 Route::get('/question/{question}', 'QuestionController@show');
 Route::get('/stat/{survey}', 'QuestionController@index');
 Route::get('summary/{survey}', 'QuestionController@summary');
-
