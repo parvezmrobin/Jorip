@@ -12,11 +12,12 @@
                <button type="button" class="btn btn-primary col-xs-6">Individual</button>
 
            </div>
-           @foreach($users as $var)
+           @foreach($questions as $question)
                <div  class="alert alert-info">
                <a href="#">
 
-                   <h5>{{$var->name}}</h5>
+                   <h4>{{$question->title}}</h4>
+                   <h3>{{<?php echo substr($question->description,30);?>}}</h3>
                </a>
            </div>
            @endforeach
