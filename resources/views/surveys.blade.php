@@ -7,9 +7,9 @@
 
             <div class="alert alert-success">
 
-                <h2 href="#">{{var->name}}<span class="label label-success" style="float:right">{{var->point}}</span></h2>
+                <h2 href="#">{{$var->name}}<span class="label label-success" style="float:right">{{$var->point}}</span></h2>
 
-                <h4>{{var->company}}</h4>
+                <h4>{{$var->company}}</h4>
 
 
             @endforeach
