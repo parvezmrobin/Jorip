@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="form-group">
-            <label for="" class="control-label col-md-4"><strong>Total Points:</strong></label>
+            <label for="" class="control-label col-md-4"><strong>Total Points: {{App\Respondent::find(Auth::id())->points}}</strong></label>
         </div>
 
         <div class="col-xs-12 form-group">

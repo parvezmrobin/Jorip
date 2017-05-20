@@ -6,6 +6,7 @@ use App\Survey;
 use Illuminate\Http\Request;
 use App\Question;
 use App\McOption;
+use App\Company;
 
 class SurveyController extends Controller
 {
@@ -65,6 +66,9 @@ class SurveyController extends Controller
         $survey->total_points = $request->input('tp');
         $survey->save();
 
+        $company = $survey->company;
+        $company->points -= ($survey->total_points);
+        $company->save();
 
         $questions = $request->input('questions');
 

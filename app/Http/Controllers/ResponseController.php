@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Response;
+use App\Question;
+use App\Survey;
 use Illuminate\Http\Request;
 
 class ResponseController extends Controller
@@ -44,13 +46,13 @@ class ResponseController extends Controller
     public function store(Request $request)
     {
         $inputs = $request->except('_token');
-        $userId = \Auth::id();
+        $user = \Auth::user();
 
         foreach ($inputs as $question => $input) {
             if (is_array($input)){
                 foreach ($input as $item) {
                     $response = new Response();
-                    $response->respondent_id = $userId;
+                    $response->respondent_id = $user->id;
                     $response->question_id = $question;
                     $response->response = $item;
                     $response->save();
@@ -58,11 +60,12 @@ class ResponseController extends Controller
                 continue;
             }
             $response = new Response();
-            $response->respondent_id = $userId;
+            $response->respondent_id = $user->id;
             $response->question_id = $question;
             $response->response = $input;
             $response->save();
         }
+        $user->points += Question::find($inputs->keys()->all()[0])->survey->points_per_response;
         return redirect('/home')->with('alert', 'Response Submitted');
     }
 
