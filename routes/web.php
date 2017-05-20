@@ -33,5 +33,5 @@ Route::get('/survey/create', 'SurveyController@create');
 Route::get('/survey/{survey}', 'SurveyController@show');
 Route::get('/question/{question}', 'QuestionController@show');
 Route::get('/stat/{survey}', 'QuestionController@index');
-Route::get('summary/{survey}', 'QuestionController@summary');
+Route::get('/summary/{survey}', 'QuestionController@summary');
 

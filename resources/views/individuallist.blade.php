@@ -12,15 +12,15 @@
                 <h3 class="text-center">Total Response: {{rand(4, 6)}}</h3>
             </div>
             <div class="btn-group col-xs-offset-3">
-               <button type="button" class="btn btn-primary col-xs-6">Summmary</button>
-               <button type="button" class="btn btn-primary col-xs-6 disabled">Individual</button>
+               <a href="../summary/{{$survey->id}}" type="button" class="btn btn-primary col-xs-6">Summary</a>
+               <a href="#" type="button" class="btn btn-primary col-xs-6 disabled">Individual</a>
            </div>
             <hr>
            @foreach($survey->questions as $question)
                <div  class="alert alert-info">
                <a href="../question/{{$question->id}}">
                    <h4>{{$question->title}}</h4>
-                   <h3>{{$question->description}}</h3>
+                   <h5>{{$question->description}}</h5>
                </a>
            </div>
            @endforeach
