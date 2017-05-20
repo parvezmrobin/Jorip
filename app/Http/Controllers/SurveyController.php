@@ -10,12 +10,21 @@ use App\McOption;
 class SurveyController extends Controller
 {
     /**
+     * CompanyController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
+
         $surveys = Survey::where('company_id', \Auth::id())->get();
         foreach ($surveys as $survey) {
             $survey->num_response = \DB::table('questions')
@@ -34,6 +43,9 @@ class SurveyController extends Controller
      */
     public function create()
     {
+        if (! isset(Company::find(\Auth::id())->created_at)){
+            return redirect('/home');
+        }
         return view('question');
     }
 
@@ -86,6 +98,9 @@ class SurveyController extends Controller
      */
     public function show(Survey $survey)
     {
+        if (isset(Company::find(\Auth::id())->created_at)){
+            return redirect('/home');
+        }
         return view('answer')->with('survey', $survey);
     }
 

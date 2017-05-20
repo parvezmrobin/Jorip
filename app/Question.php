@@ -10,6 +10,10 @@ class Question extends Model
         return $this->belongsTo('App\Type');
     }
 
+    public function survey(){
+        return $this->belongsTo(Survey::class);
+    }
+
     public function Options(){
         return $this->hasMany(McOption::class);
     }

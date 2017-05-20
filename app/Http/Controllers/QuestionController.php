@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 class QuestionController extends Controller
 {
     /**
+     * CompanyController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param $survey \App\Survey
@@ -16,11 +24,17 @@ class QuestionController extends Controller
      */
     public function index(Survey $survey)
     {
+        if ($survey->company_id !== \Auth::id()){
+            redirect('/home');
+        }
         return view('individuallist')->with('survey', $survey);
     }
 
     public function summary(Survey $survey)
     {
+        if ($survey->company_id !== \Auth::id()){
+            redirect('/home');
+        }
         $questions = $survey->questions()->where('type_id', '>', 2)->get();
         foreach ($questions as $question) {
             $question->responses = \DB::table('responses')
@@ -52,6 +66,9 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
+        if ($question->survey->company_id !== \Auth::id()){
+            redirect('/home');
+        }
         return view('individualdetails')->with('question', $question);
     }
 
