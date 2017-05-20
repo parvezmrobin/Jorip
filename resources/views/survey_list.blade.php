@@ -4,11 +4,12 @@
 
 <div class="container">
     <div class="row">
-        @foreach($sueveys as $survey)
+        @foreach($surveys as $survey)
+
         <div class="alert alert-info">
             <a href="../summary/{{$survey->id}}">
                 <h3 >{{$survey->title}}<span class="label label-primary" style="float:right">{{$survey->points_per_response}}</span></h3>
-                <h5>{{<?php echo substr($survey->description,30);?>}}</h5>
+                <h5>{{$survey->description}}</h5>
 
 
             </a>

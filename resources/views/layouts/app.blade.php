@@ -47,9 +47,9 @@
             </div>
             <div class="navbar-header navbar-right pull-right">
                 <ul class="nav pull-left list-inline ">
-                    <li class="navbar-text pull-left"><a href="#"><span class="glyphicon glyphicon-envelope"></span></a></li>
+                    <li class="navbar-text pull-left"><a href="{{url('inbox')}}"><span class="glyphicon glyphicon-envelope"></span></a></li>
                     <li class="navbar-text pull-left"><a href="{{url('survey_list')}}"><span class="glyphicon glyphicon-stats"></span></a></li>
-                    <li class="navbar-text pull-left"><a href="#"><span class="glyphicon glyphicon-folder-open"></span></a></li>
+                    <li class="navbar-text pull-left"><a href="{{url('home')}}"><span class="glyphicon glyphicon-folder-open"></span></a></li>
                     <li class="navbar-text pull-left"><a href="{{url('survey/create')}}"><span class="glyphicon glyphicon-file"></span></a></li>
                     <li class="navbar-text pull-left">
                         <a href="#" data-toggle="collapse" data-target="#clps">

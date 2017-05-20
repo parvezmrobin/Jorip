@@ -20,7 +20,7 @@ class SurveyController extends Controller
         foreach ($surveys as $survey) {
             $survey->num_response = \DB::table('questions')
                 ->join('responses', 'question_id', 'questions.id')
-                ->where('question.survey_id', $survey->id)
+                ->where('questions.survey_id', $survey->id)
                 ->select(\DB::raw('count(DISTINCT respondent_id)'))
                 ->get()->first();
         }

@@ -1,18 +1,47 @@
 @extends('layouts.app')
 
-@section('content')
-    <div class="container">
-        <div class="row">
-            @foreach($messages as $var)
-                <div  class="alert alert-info">
-                <a href="#">
-                    <h3 >{{$var->sender->name}}</h3>
-                    <h5>{{<?php echo substr($var->body,30);?>}}</h5>
+@section('style')
+<style media="screen">
 
-                </a>
-            </div>
-            @endforeach
+</style>
+@endsection
+@section('content')
+<div class="container">
+    <div class="row">
+        <h2 class="col-xs-offset-3">Messages</h2>
+        <div  class="alert alert-info">
+            <a href="./msgdetails"><h3 >Shahriar Shuvo</h3>
+            <h5>Hello Oishie?how are you doing??.....</h5></a>
+
+
 
         </div>
+        <div  class="alert alert-info">
+            <a href="./msgdetails"><h3 >Parvez M. Robin</h3>
+            <h5>Hey! Have you checked the new...</h5></a>
+
+
+
+        </div>
+        <div  class="alert alert-info">
+            <a href="./msgdetails"><h3 >Sumaya</h3>
+            <h5>Where are you? I am calling you...</h5>"></a>
+
+
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-6 ">
+
+                <a href="./message" class="btn btn-primary " style="float:right"  >
+                    <span class="glyphicon glyphicon-plus-sign"></span>
+                </a>
+            </div>
+        </div>
+
+
+
+
     </div>
+</div>
 @endsection

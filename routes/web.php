@@ -31,10 +31,18 @@ Route::get('/answer', function () {
 Route::get('/payments', function () {
     return view('payments');
 });
-
-Route::get('/survey_list', function () {
-    return view('survey_list');
+Route::get('/message', function () {
+    return view('messagesend');
 });
+Route::get('/msgdetails', function () {
+    return view('msgdetails');
+});
+Route::get('/inbox', function () {
+    return view('Inbox');
+});
+
+
+Route::get('/survey_list','SurveyController@index' );
 
 Route::post('/survey', 'SurveyController@store');
 Route::get('/survey/create', 'SurveyController@create');
