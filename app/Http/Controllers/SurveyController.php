@@ -15,7 +15,7 @@ class SurveyController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+
     }
 
     /**
@@ -25,7 +25,7 @@ class SurveyController extends Controller
      */
     public function index()
     {
-
+        $this->middleware('auth');
         $surveys = Survey::where('company_id', \Auth::id())->get();
         foreach ($surveys as $survey) {
             $survey->num_response = \DB::table('questions')
@@ -44,6 +44,7 @@ class SurveyController extends Controller
      */
     public function create()
     {
+        $this->middleware('auth');
         if (! isset(Company::find(\Auth::id())->created_at)){
             return redirect('/home');
         }
@@ -102,6 +103,7 @@ class SurveyController extends Controller
      */
     public function show(Survey $survey)
     {
+        $this->middleware('auth');
         if (isset(Company::find(\Auth::id())->created_at)){
             return redirect('/home');
         }
