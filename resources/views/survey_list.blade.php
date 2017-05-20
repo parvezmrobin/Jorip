@@ -10,10 +10,7 @@
             <a href="../summary/{{$survey->id}}">
                 <h3 >{{$survey->title}}<span class="label label-primary" style="float:right">{{$survey->points_per_response}}</span></h3>
                 <h5>{{$survey->description}}</h5>
-
-
             </a>
-
         </div>
         @endforeach
 

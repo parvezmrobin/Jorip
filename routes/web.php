@@ -12,12 +12,9 @@
 */
 
 Route::post('response', 'ResponseController@store');
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
-
+Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/surveys', function () {
@@ -49,4 +46,4 @@ Route::get('/survey/create', 'SurveyController@create');
 Route::get('/survey/{survey}', 'SurveyController@show');
 Route::get('/question/{question}', 'QuestionController@show');
 Route::get('/stat/{survey}', 'QuestionController@index');
-Route::get('summary/{survey}', 'QuestionController@summary');
+Route::get('/summary/{survey}', 'QuestionController@summary');

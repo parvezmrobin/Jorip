@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 class QuestionController extends Controller
 {
     /**
+     * CompanyController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param $survey \App\Survey
@@ -16,21 +24,27 @@ class QuestionController extends Controller
      */
     public function index(Survey $survey)
     {
+        if ($survey->company_id !== \Auth::id()){
+            redirect('/home');
+        }
         return view('individuallist')->with('survey', $survey);
     }
 
     public function summary(Survey $survey)
     {
+        if ($survey->company_id !== \Auth::id()){
+            redirect('/home');
+        }
         $questions = $survey->questions()->where('type_id', '>', 2)->get();
         foreach ($questions as $question) {
             $question->responses = \DB::table('responses')
                 ->join('mc_options', 'responses.response', 'mc_options.id')
                 ->where('responses.question_id', $question->id)
-                ->groupByRaw('mc_options.id, option')
-                ->select(\DB::raw('count(mc_options.id) as response_count, mc_options.id, ms_options.option'))
+                ->groupBy('mc_options.id', 'option')
+                ->select(\DB::raw('count(mc_options.id) as response_count, mc_options.id, mc_options.option'))
                 ->get();
         }
-        return view('summary')->with('questions', $questions)->with('survey', $survey);
+        return view('survey_summary')->with('questions', $questions)->with('survey', $survey);
     }
 
     /**
@@ -52,6 +66,9 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
+        if ($question->survey->company_id !== \Auth::id()){
+            redirect('/home');
+        }
         return view('individualdetails')->with('question', $question);
     }
 
