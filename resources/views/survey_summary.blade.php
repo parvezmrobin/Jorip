@@ -28,8 +28,8 @@
 @endsection
 
 @section('script')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="{{asset("js/chart.bundle.js")}}"></script>
+    <script src="{{asset("js/chart.js")}}"></script>
     <script>
         var ctx, data;
         @foreach($questions as $question)
